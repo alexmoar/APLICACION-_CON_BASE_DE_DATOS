@@ -56,7 +56,7 @@ public class SingUpController {
 		}
 
 		else if (fav.crearUsuario(txtNombre.getText().toString(), txtEdad.getText().toString(),
-				txtNick.getText().toString(), this.txtClave.getText().toString(), txtCorreo.getText().toString())) {
+				txtNick.getText().toString(), txtCorreo.getText().toString(), this.txtClave.getText().toString())) {
 			Stage stage = Utilidad.obtenerStage(e);
 			stage.close();
 			u.buscarStage("/vista/Login.fxml", stage);

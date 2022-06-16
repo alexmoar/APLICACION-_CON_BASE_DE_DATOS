@@ -152,7 +152,7 @@ public class UsuarioDAO {
 		
 	
 	
-	public boolean ingresarUser(String correo,String clave) {
+	public boolean ingresarUser(String nickname,String clave) {
 		
 		boolean seguro = false;
 		Connection conn = null;
@@ -160,7 +160,7 @@ public class UsuarioDAO {
 		try {
 
 			String sql;
-			sql = "SELECT * FROM USUARIOS WHERE EMAIL='" + correo + "'";
+			sql = "SELECT * FROM USUARIOS WHERE NICKNAME='" + nickname + "'";
 
 			conn = Coneccion.getConnection();
 

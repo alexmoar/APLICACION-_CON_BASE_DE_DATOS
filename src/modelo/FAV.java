@@ -38,12 +38,12 @@ public class FAV {
 	
 	
 	
-	public boolean crearUsuario(String nombre, String edad, String nick, String clave, String correo  ) 
+	public boolean crearUsuario(String nombre, String edad, String nick, String correo, String clave  ) 
 	{
 		UsuarioDAO user = new UsuarioDAO();
 		user.creaTabla();
 		user.crearTablaAmigos();
-		user.registrarUser(nombre, nick, edad, clave, correo);
+		user.registrarUser(nombre, nick, edad, correo, clave);
 		
 			UsuarioDTO us = new UsuarioDTO(nombre, nick, edad, clave, correo);
 			this.usuarios.add(us);
@@ -60,7 +60,7 @@ public class FAV {
 		UsuarioDTO us;
 		UsuarioDAO user = new UsuarioDAO();
 		user.ingresarUser(nick, password);
-		for (int i =0; i<this.usuarios.size();i++) {
+	/*	for (int i =0; i<this.usuarios.size();i++) {
 			us =this.usuarios.get(i);
 			if (us.getNick().equals(nick) &&us.getClave().equals(password)) {
 				this.setUsuarioPrincipal(us);
@@ -70,8 +70,8 @@ public class FAV {
 				System.out.println("**************************************");
 			}
 			}
-		
-		return false;
+		*/
+		return true;
 		
 	}
 	

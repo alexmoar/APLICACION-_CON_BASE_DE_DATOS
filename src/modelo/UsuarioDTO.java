@@ -18,7 +18,7 @@ public class UsuarioDTO implements MensajeInterface {
 	private ArrayList<UsuarioDTO> amigos=new ArrayList<UsuarioDTO>();
 	private ArrayList<Chat> chats= new ArrayList<Chat>();
 
-	public UsuarioDTO(String nombre, String nick, String edad, String clave, String correo) {
+	public UsuarioDTO(String nombre, String nick, String edad, String correo, String clave) {
 		this.nombre = nombre;
 		this.nick = nick;
 		this.edad = edad;
