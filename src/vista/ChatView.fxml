@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="860.0" style="-fx-background-color: #2d2c2c;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.ChatController">
+   <left>
+      <BorderPane prefHeight="200.0" prefWidth="344.0" BorderPane.alignment="CENTER">
+         <top>
+            <StackPane alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" style="-fx-border-style: solid; -fx-border-width: 0 0 2 0; -fx-border-color: #1c1c1c;" BorderPane.alignment="CENTER">
+               <children>
+                  <Label style="-fx-label-padding: 0 0 0 22;" text="Chats" textFill="WHITE">
+                     <font>
+                        <Font name="Rockwell" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+         </top>
+         <center>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-padding: 22 0 0 0;" BorderPane.alignment="CENTER">
+               <top>
+                  <ComboBox fx:id="cBox" onAction="#cBoxEvent" prefHeight="41.0" prefWidth="298.0" promptText="Chats" style="-fx-background-color: #4d4c4c; -fx-text-color: white;" BorderPane.alignment="TOP_CENTER" />
+               </top>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label layoutX="38.0" layoutY="65.0" text="Miembros:" textFill="#12abff">
+                           <font>
+                              <Font name="Rockwell Bold Italic" size="21.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="txtMiembros" editable="false" layoutX="38.0" layoutY="95.0" opacity="0.13" prefHeight="168.0" prefWidth="252.0" style="-fx-background-color: #4d4c4c;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </center></BorderPane>
+   </left>
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="516.0" style="-fx-background-color: #1c1c1c;" BorderPane.alignment="CENTER">
+         <top>
+            <GridPane maxHeight="60.0" minHeight="60.0" prefHeight="60.0" prefWidth="520.0" style="-fx-border-style: solid; -fx-border-width: 0 0 2 0; -fx-border-color: #2d2c2c;" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="60.0" minWidth="60.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="60.0" minWidth="60.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <StackPane prefHeight="150.0" prefWidth="200.0" />
+                  <Label fx:id="user" text="Usuario" textFill="WHITE" GridPane.columnIndex="1">
+                     <font>
+                        <Font name="Rockwell" size="18.0" />
+                     </font>
+                  </Label>
+                  <Button mnemonicParsing="false" onAction="#atrasEvent" style="-fx-background-radius: 10 10 10 10; -fx-background-color: #3C3C3C;" text="ATRAS" textFill="#aeaeae" GridPane.columnIndex="2" />
+               </children>
+            </GridPane>
+         </top>
+         <bottom>
+            <StackPane maxHeight="80.0" minHeight="80.0" prefHeight="80.0" prefWidth="200.0" style="-fx-padding: 0 22 0 22;" BorderPane.alignment="CENTER">
+               <children>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-padding: 0 2 2 0;">
+                     <left>
+                        <TextField fx:id="mensaje" maxHeight="40.0" minHeight="40.0" prefHeight="40.0" prefWidth="396.0" promptText="Escribe un mensaje..." style="-fx-background-color: -fx-focus-color, #4A4848; -fx-background-insets: 0, 0 0 3 0; -fx-background-radius: 0 6 6 0; -fx-text-fill: white;" BorderPane.alignment="CENTER" />
+                     </left>
+                     <right>
+                        <Button fx:id="btnEnviar" mnemonicParsing="false" onAction="#enviarEvent" style="-fx-background-color: #12abff;" text="Enviar" textFill="WHITE" BorderPane.alignment="CENTER" />
+                     </right>
+                  </BorderPane>
+               </children>
+            </StackPane>
+         </bottom>
+         <center>
+            <TextArea fx:id="txtMensajes" editable="false" opacity="0.13" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFF;" BorderPane.alignment="CENTER" />
+         </center></BorderPane>
+   </center>
+</BorderPane>

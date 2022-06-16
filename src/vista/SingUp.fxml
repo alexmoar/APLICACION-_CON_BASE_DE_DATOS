@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.SingUpController">
+   <children>
+      <Label layoutX="192.0" layoutY="51.0" text="Crear cuenta">
+         <font>
+            <Font name="Segoe UI Semibold" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="178.0" layoutY="422.0" prefHeight="18.0" prefWidth="254.0" text="Clave" textFill="#1e1e1e">
+         <font>
+            <Font name="Segoe UI Semibold" size="17.0" />
+         </font></Label>
+      <Label layoutX="178.0" layoutY="350.0" prefHeight="18.0" prefWidth="254.0" text="Correo" textFill="#1e1e1e">
+         <font>
+            <Font name="Segoe UI Semibold" size="17.0" />
+         </font></Label>
+      <Label layoutX="178.0" layoutY="154.0" prefHeight="33.0" prefWidth="254.0" text="Nombre" textFill="#1e1e1e">
+         <font>
+            <Font name="Segoe UI Semibold" size="16.0" />
+         </font></Label>
+      <Label layoutX="178.0" layoutY="223.0" prefHeight="18.0" prefWidth="254.0" text="Nick" textFill="#1e1e1e">
+         <font>
+            <Font name="Segoe UI Semibold" size="17.0" />
+         </font></Label>
+      <Label layoutX="178.0" layoutY="285.0" prefHeight="18.0" prefWidth="254.0" text="edad" textFill="#1e1e1e">
+         <font>
+            <Font name="Segoe UI Semibold" size="17.0" />
+         </font></Label>
+      <TextField fx:id="txtNombre" layoutX="178.0" layoutY="182.0" prefHeight="33.0" prefWidth="254.0" promptText="Ej: juan pedro " style="-fx-background-color: white; -fx-border-color: #dde2ec; -fx-border-radius: 25;" />
+      <TextField fx:id="txtNick" layoutX="179.0" layoutY="248.0" prefHeight="33.0" prefWidth="254.0" promptText="Ej: juan27" style="-fx-background-color: white; -fx-border-color: #dde2ec; -fx-border-radius: 25;" />
+      <TextField fx:id="txtEdad" layoutX="179.0" layoutY="307.0" prefHeight="33.0" prefWidth="254.0" promptText="Ej: 20" style="-fx-background-color: white; -fx-border-color: #dde2ec; -fx-border-radius: 25;" />
+      <TextField fx:id="txtCorreo" layoutX="178.0" layoutY="376.0" prefHeight="33.0" prefWidth="254.0" promptText="EJ: Jauan@correo.com" style="-fx-background-color: white; -fx-border-color: #dde2ec; -fx-border-radius: 25;" />
+      <Button fx:id="btnRigistro" layoutX="316.0" layoutY="531.0" mnemonicParsing="false" onAction="#crearCuentaAction" prefHeight="45.0" prefWidth="140.0" style="-fx-background-color: #047bf8; -fx-border-radius: 50; -fx-background-radius: 50;" text="Crear cuenta" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <PasswordField fx:id="txtClave" layoutX="179.0" layoutY="448.0" prefHeight="33.0" prefWidth="254.0" promptText="Ej:1234" style="-fx-background-color: white; -fx-border-color: #dde2ec; -fx-border-radius: 25;" />
+      <Separator layoutX="-3.0" layoutY="102.0" prefHeight="3.0" prefWidth="607.0" />
+      <Label layoutX="193.0" layoutY="91.0" prefHeight="9.0" prefWidth="85.0" style="-fx-background-color: #047bf8; -fx-background-radius: 10; -fx-border-radius: 10;">
+         <font>
+            <Font size="4.0" />
+         </font>
+      </Label>
+      <Button layoutX="178.0" layoutY="531.0" mnemonicParsing="false" onAction="#atrasAction" prefHeight="45.0" prefWidth="94.0" style="-fx-background-color: black; -fx-border-radius: 45; -fx-background-radius: 45;" text="Atras" textFill="WHITE" />
+      <Label fx:id="error" layoutX="279.0" layoutY="493.0" textFill="#e11616">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
