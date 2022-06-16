@@ -75,27 +75,10 @@ public class HomeController implements Initializable {
 	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		labelnick.setText(fav.getUsuarioPrincipal().getNick());
+		labelnick.setText(fav.getUsuarioSession().getNick());
 		
 		UsuarioDTO us = fav.getUsuarioPrincipal();
-		 ArrayList<UsuarioDTO> list = us.getAmigos();
-		 
-//		 cBox.getItems().addAll(list);
-//		 cBox.setConverter(new StringConverter<UsuarioDTO>() {
-//			
-//			@Override
-//			public String toString(UsuarioDTO user) {
-//				// TODO Auto-generated method stub
-//				return user.getNick();
-//			}
-//			
-//			@Override
-//			public UsuarioDTO fromString(String arg0) {
-//				
-//				return null;
-//			}
-//		});
-		
+		// ArrayList<UsuarioDTO> list = us.getAmigos();
 		
 	}
 	@FXML

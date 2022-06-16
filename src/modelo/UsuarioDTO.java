@@ -28,6 +28,10 @@ public class UsuarioDTO implements MensajeInterface {
 		
 	}
 
+	public UsuarioDTO(String nick) {
+		this.nick = nick;
+	}
+
 	public UsuarioDTO() {
 		
 	}

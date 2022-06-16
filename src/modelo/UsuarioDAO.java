@@ -191,4 +191,36 @@ public class UsuarioDAO {
 		return seguro;
 
 	}
+	
+	public String odtenerUsuario(String nickname) {
+		String usuario="";
+		Connection conn = null;
+		Statement statementOb = null;
+		try {
+
+			String sql;
+			sql = "SELECT * FROM USUARIOS WHERE NICKNAME='" + nickname + "'";
+
+			conn = Coneccion.getConnection();
+
+			statementOb = conn.createStatement();
+
+			ResultSet rs = statementOb.executeQuery(sql);
+			rs.next();
+			usuario = rs.getString("NICKNAME");
+
+
+		} catch (SQLException e) {
+			System.err.println("el usuario ingresado no esta en la base de datos : " + e.getMessage());
+		} finally {
+			// Close the connection
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
+		return usuario;
+		}
 }

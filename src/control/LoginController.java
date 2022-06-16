@@ -63,7 +63,7 @@ public class LoginController  {
 			error.setText("Rellena todas las casillas");
 		}
 		else {
-			error.setText("Usuario o contraseña equivocada");
+			error.setText("Usuario o contraseï¿½a equivocada");
 		}
 		
 		

@@ -11,6 +11,7 @@ public class FAV {
 	private ArrayList<UsuarioDTO> usuarios;
 	private static FAV instance;
 	private UsuarioDTO usuarioPrincipal;
+	private UsuarioDTO usuarioSession;
 	
 	
 	private FAV() {
@@ -36,6 +37,12 @@ public class FAV {
 	}
 	
 	
+
+	public  UsuarioDTO getUsuarioSession() {
+		return this.usuarioSession;
+	}
+	
+	
 	
 	
 	public boolean crearUsuario(String nombre, String edad, String nick, String correo, String clave  ) 
@@ -55,11 +62,18 @@ public class FAV {
 		
 	}
 
-
+    public UsuarioDAO getUserSession() {
+    	UsuarioDAO user = new UsuarioDAO();
+    	
+    	// user.odtenerUsuario(nick);
+    	return user;
+    }
 	public boolean validarInfo(String nick, String password) {
-		UsuarioDTO us;
+	//	UsuarioDTO us;
 		UsuarioDAO user = new UsuarioDAO();
 		user.ingresarUser(nick, password);
+		this.usuarioSession = new UsuarioDTO(nick);
+		
 	/*	for (int i =0; i<this.usuarios.size();i++) {
 			us =this.usuarios.get(i);
 			if (us.getNick().equals(nick) &&us.getClave().equals(password)) {
