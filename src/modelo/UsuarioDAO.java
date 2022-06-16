@@ -53,25 +53,7 @@ public class UsuarioDAO {
 		
 	}
 	
-	public void crearTablaChats() {
-		
-		StringBuffer sbCreateTableSQL = new StringBuffer();
-		sbCreateTableSQL.append("create table chats (id int primary key , ");
-		sbCreateTableSQL.append("mensajes int, idUsuario int)");
 	
-
-		System.out.println(sbCreateTableSQL);
-		try (Connection connection = Coneccion.getConnection();
-				Statement statement = connection.createStatement();) {
-
-			statement.execute(sbCreateTableSQL.toString());
-
-		} catch (SQLException e) {
-			System.err.println("Ya est� creada la tabla");
-		} finally {
-	}
-		
-	}
 	
 	public void registrarUser(String nombre, String nick, String edad,  String correo,String clave)  {
 		Connection conn = null;

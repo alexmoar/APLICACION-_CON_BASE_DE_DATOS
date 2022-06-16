@@ -6,7 +6,7 @@ public class Chat {
 	
 	private static int cont;
 	private int id;
-//	private String avatar;
+
 	private ArrayList<UsuarioDTO> miembros;
 	private String nombre;
 	private ArrayList<Mensaje> mensajes;

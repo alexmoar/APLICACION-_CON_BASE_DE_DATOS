@@ -26,8 +26,7 @@ public class HomeController implements Initializable {
 	
 	@FXML
 	private Label labelnick;
-//	@FXML
-//	private ComboBox<UsuarioDTO> cBox;
+
 	
 	
 	
@@ -78,7 +77,7 @@ public class HomeController implements Initializable {
 		labelnick.setText(fav.getUsuarioSession().getNick());
 		
 		UsuarioDTO us = fav.getUsuarioPrincipal();
-		// ArrayList<UsuarioDTO> list = us.getAmigos();
+		//ArrayList<UsuarioDTO> list = us.getAmigos();
 		
 	}
 	@FXML

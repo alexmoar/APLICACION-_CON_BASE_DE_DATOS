@@ -19,6 +19,7 @@ public class Principal extends Application {
 	
 	@Override
 	public void start(Stage stage) throws Exception  {
+		
 		UsuarioDTO user1 = new UsuarioDTO("David","David21","20","123","david@ufps");
 		
 		UsuarioDTO user2 = new UsuarioDTO("Alex","Alex21","21","124","david@ufps");
@@ -32,6 +33,7 @@ public class Principal extends Application {
 		
 		FAV fav =FAV.getInstance();
 		
+		fav.creartablas();
 		fav.agregarUsuario(user1);
 		fav.agregarUsuario(user2);
 		fav.agregarUsuario(user3);
