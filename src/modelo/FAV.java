@@ -43,6 +43,8 @@ public class FAV {
 		UsuarioDAO user = new UsuarioDAO();
 		user.creaTabla();
 		user.crearTablaAmigos();
+		user.registrarUser(nombre, nick, edad, clave, correo);
+		
 			UsuarioDTO us = new UsuarioDTO(nombre, nick, edad, clave, correo);
 			this.usuarios.add(us);
 			for (int i = 0; i < usuarios.size(); i++) {
@@ -56,6 +58,8 @@ public class FAV {
 
 	public boolean validarInfo(String nick, String password) {
 		UsuarioDTO us;
+		UsuarioDAO user = new UsuarioDAO();
+		user.ingresarUser(nick, password);
 		for (int i =0; i<this.usuarios.size();i++) {
 			us =this.usuarios.get(i);
 			if (us.getNick().equals(nick) &&us.getClave().equals(password)) {
@@ -71,13 +75,7 @@ public class FAV {
 		
 	}
 	
-	/*public void validadCampos() {
-		
-		if(txtNombre.getText().isEmpty()|| txtCorreo.getText().isEmpty()||txtNick.getText().isEmpty()
-				||txtEdad.getText().isEmpty()||txtClave.getP ) {	
-			System.out.println("llene toda los campos ");
-			}else {
-	}*/
+	
 	
 	public void agregarUsuario(UsuarioDTO us) {
 		UsuarioDAO user = new UsuarioDAO();

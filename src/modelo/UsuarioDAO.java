@@ -1,6 +1,7 @@
 package modelo;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -9,6 +10,8 @@ import utilidades.Coneccion;
 
 
 public class UsuarioDAO {
+	
+	public Coneccion con;
 
 	public void creaTabla() {
 		
@@ -44,7 +47,7 @@ public class UsuarioDAO {
 			statement.execute(sbCreateTableSQL.toString());
 
 		} catch (SQLException e) {
-			System.err.println("Ya está creada la tabla");
+			System.err.println("Ya estï¿½ creada la tabla");
 		} finally {
 	}
 		
@@ -64,9 +67,128 @@ public class UsuarioDAO {
 			statement.execute(sbCreateTableSQL.toString());
 
 		} catch (SQLException e) {
-			System.err.println("Ya está creada la tabla");
+			System.err.println("Ya estï¿½ creada la tabla");
 		} finally {
 	}
 		
+	}
+	
+	public void registrarUser(String nombre, String nick, String edad,  String correo,String clave)  {
+		Connection conn = null;
+		Statement statementOb = null;
+		boolean agregado = false;
+		int amigos = 0;
+		System.out.println(nombre);
+		try {
+			
+			conn = Coneccion.getConnection();
+			statementOb = conn.createStatement();
+
+			StringBuffer sb = new StringBuffer();
+			sb.append("INSERT INTO USERS(NOMBRE, NIKNAME, EDAD, EMAIL, AMIGOS, CHAT, PASSWORD ) ");
+			sb.append("VALUES ('"+nombre+"', '"+nick+"', '"+edad+"', '"+correo+"','"+amigos	+"', '"+amigos+"','"+clave+"' )");
+			
+			
+			statementOb.executeUpdate(sb.toString());
+
+			agregado = true;
+
+		} catch (SQLException e) {
+			System.err.println("No se pudo agregar el estudiante debido al error: " + e.getMessage());
+		} finally {
+			// Close the connection
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
+
+	
+	}
+
+
+			
+	public void registraAmigo(int id , String nick) {
+		
+		Connection conn = null;
+		Statement statementOb = null;
+		
+		
+		
+		try {
+			
+			conn = Coneccion.getConnection();
+			statementOb = conn.createStatement();
+
+			StringBuffer sb = new StringBuffer();
+			sb.append("INSERT INTO AMIGOS(IDUSER, NIKNAME ) ");
+			sb.append("VALUES ('"+id+"', '"+nick+"')");
+			
+			
+			statementOb.executeUpdate(sb.toString());
+
+			
+
+		} catch (SQLException e) {
+			System.err.println("No se pudo agregar el estudiante debido al error: " + e.getMessage());
+		} finally {
+			// Close the connection
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
+
+		
+	}
+
+			
+			
+			
+		
+	
+	
+	public boolean ingresarUser(String correo,String clave) {
+		
+		boolean seguro = false;
+		Connection conn = null;
+		Statement statementOb = null;
+		try {
+
+			String sql;
+			sql = "SELECT * FROM USUARIOS WHERE EMAIL='" + correo + "'";
+
+			conn = Coneccion.getConnection();
+
+			statementOb = conn.createStatement();
+
+			ResultSet rs = statementOb.executeQuery(sql);
+			rs.next();
+			String contra = rs.getString("PASSWORD");
+
+			if (contra.equals(clave)) {
+				seguro = true;
+
+				
+
+			}
+
+		} catch (SQLException e) {
+			System.err.println("el usuario ingresado no esta en la base de datos : " + e.getMessage());
+		} finally {
+			// Close the connection
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
+		return seguro;
+
 	}
 }
