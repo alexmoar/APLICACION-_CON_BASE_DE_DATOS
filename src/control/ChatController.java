@@ -45,9 +45,9 @@ public class ChatController implements Initializable {
 
 		fav = FAV.getInstance();
 		UsuarioDTO us = fav.getUsuarioPrincipal();
-		ArrayList<Chat> list = us.getChats();
+	//	ArrayList<Chat> list = us.getChats();
 
-		cBox.getItems().addAll(list);
+		//cBox.getItems().addAll(list);
 		cBox.setConverter(new StringConverter<Chat>() {
 
 			@Override
