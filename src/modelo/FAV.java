@@ -1,7 +1,13 @@
 package modelo;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Iterator;
+
+
+import utilidades.Conexion;
 
 public class FAV {
 
@@ -12,11 +18,14 @@ public class FAV {
 
 	private UsuarioDAO user = new UsuarioDAO();
 	private ChatDAO chat = new ChatDAO();
+	private Connection conn;
 
 	private FAV() {
 		usuarios = new ArrayList<UsuarioDTO>();
-
+		conn = Conexion.getConnection();
 	}
+
+	
 
 	public static FAV getInstance() {
 		if (instance == null)
@@ -24,9 +33,39 @@ public class FAV {
 
 		return instance;
 	}
+	
+	public void llenarUsuarios() {
+		
+		Statement statementOb = null;
+		
+		try {
+			statementOb = conn.createStatement();
+	        ResultSet rs = statementOb.executeQuery("SELECT * FROM USERS");
+	        
+	        while (rs.next()) {
+	        	UsuarioDTO us= new UsuarioDTO();
+	        	us.setNick(rs.getString("NIKNAME"));
+	        	us.setNombre(rs.getString("NOMBRE"));
+	        	us.setEdad(rs.getString("EDAD"));
+	        	us.setCorreo(rs.getString("EMAIL"));
+	        	
+	        	this.usuarios.add(us);
+	        	
+	        }}catch(Exception e) {
+				System.err.println("Se presentó un error ejecutando la consulta. "+e.getMessage());
+			}finally {
+				// Close the connection            
+	            try {
+	            	statementOb.close();
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+	}
+	}
 
-	public void setUsuarioPrincipal(UsuarioDTO us) {
-		usuarioPrincipal = us;
+	public void setUsuarioPrincipal(String nick) {
+		this.usuarioPrincipal= user.obtenerUsuario(nick);
 	}
 
 	public UsuarioDTO getUsuarioPrincipal() {
@@ -57,28 +96,31 @@ public class FAV {
 	}
 
 	public boolean validarInfo(String nick, String password) {
+		boolean exito=false;
 		UsuarioDTO us;
 		UsuarioDAO user = new UsuarioDAO();
-		user.ingresarUser(nick, password);
+		
 		this.usuarioSession = new UsuarioDTO(nick);
+		exito= user.ingresarUser(nick, password);
+		this.setUsuarioPrincipal(nick);
 
-		for (int i = 0; i < this.usuarios.size(); i++) {
-			us = this.usuarios.get(i);
-			if (us.getNick().equals(nick) && us.getClave().equals(password)) {
-				this.setUsuarioPrincipal(us);
-				return true;
-			} else {
-				System.out.println("**************************************");
-			}
-		}
+//		for (int i = 0; i < this.usuarios.size(); i++) {
+//			us = this.usuarios.get(i);
+//			if (us.getNick().equals(nick) && us.getClave().equals(password)) {
+//				
+//				return true;
+//			} else {
+//				
+//			}
+//		}
 
-		return true;
+		return exito;
 
 	}
 
 	public void agregarUsuario(UsuarioDTO us) {
 
-		user.crearTablaAmigos();
+		
 		this.usuarios.add(us);
 	}
 
@@ -91,8 +133,24 @@ public class FAV {
 	}
 	
 	public void creartablas() {
-		user.creaTabla();
+		user.crearTablaAmigos();
+		
 		chat.crearTablaChats();
+		user.creaTabla();
+		user.creaTabla();
+		user.creaTabla();
+		user.creaTabla();
+		user.creaTabla();
+		user.creaTabla();
+		
+		user.creaTabla();
+	}
+	public UsuarioDAO getUser() {
+		return user;
+	}
+
+	public void setUser(UsuarioDAO user) {
+		this.user = user;
 	}
 
 }

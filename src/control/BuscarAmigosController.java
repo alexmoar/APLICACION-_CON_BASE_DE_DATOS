@@ -52,16 +52,18 @@ public class BuscarAmigosController {
 	@FXML
 	protected void mostrarAmigos(ActionEvent e) {
 		UsuarioDTO us = fav.getUsuarioPrincipal();
+		System.out.println(fav.getUsuarioPrincipal().getNick());
 		
-		txtArea.setText(us.mostrarAmigos());	
+		txtArea.setText(us.mostrarAmigos());
 			
 		}
 	
 	@FXML 
 	protected void agregar(ActionEvent e) {
+		fav.llenarUsuarios();
 		for (int i = 0; i < fav.getUsuarios().size(); i++) {
 			if(nombreUsuario.getText().equals(fav.getUsuarios().get(i).getNick())) {
-				fav.getUsuarioPrincipal().agregarAmigos(fav.getUsuarios().get(i));
+				fav.getUser().agregarAmigo(nombreUsuario.getText(), fav.getUsuarioPrincipal().getNick());
 			}
 		}
 		

@@ -3,26 +3,36 @@ package modelo;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
-import utilidades.Coneccion;
+import utilidades.Conexion;
 
 public class ChatDAO {
+	private Connection conn;
 	
+	public ChatDAO() {
+		conn = Conexion.getConnection();
+	}
 public void crearTablaChats() {
 		
-		StringBuffer sbCreateTableSQL = new StringBuffer();
-		sbCreateTableSQL.append("create table chats (id int primary key , ");
-		sbCreateTableSQL.append("mensajes int, idUsuario int)");
-	
+	StringBuffer sbCreateTableSQL = new StringBuffer();
+	sbCreateTableSQL.append("create table chats (id int primary key auto_increment , ");
+	sbCreateTableSQL.append(" idUsuario int)");
+	String sql = "ALTER TABLE chats ADD FOREIGN KEY (id) REFERENCES mensajes(idchat)";
 
-		System.out.println(sbCreateTableSQL);
-		try (Connection connection = Coneccion.getConnection();
-				Statement statement = connection.createStatement();) {
+	try (Statement statement = conn.createStatement();) {
 
-			statement.execute(sbCreateTableSQL.toString());
+		statement.execute(sbCreateTableSQL.toString());
+		statement.execute(sql);
 
+	} catch (SQLException e) {
+
+		System.err.println(e);
+	} finally {
+		try {
+			conn.close();
 		} catch (SQLException e) {
-			System.err.println("Ya est� creada la tabla");
-		} finally {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 		
 	}
